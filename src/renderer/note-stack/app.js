@@ -134,7 +134,7 @@
   }
 
   function buildNotePage(note, index, className, renderData, showCurl) {
-    const title = `KK便利贴${stackData.notes.length > 1 ? ` ${index + 1}` : ''}`;
+    const title = `KKTap${stackData.notes.length > 1 ? ` ${index + 1}` : ''}`;
     const bodyHtml = `${renderData.contentHtml}${renderData.imagesHtml}`;
 
     return `

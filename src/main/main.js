@@ -10,6 +10,9 @@ const reportService = require('./reportService');
 
 const TOGGLE_NOTES_HOTKEY = 'Ctrl+Alt+H';
 
+app.setName('KKTap');
+app.setPath('userData', path.join(app.getPath('appData'), 'KKTap'));
+
 app.whenReady().then(() => {
   noteStore.load();
   noteStore.registerIpcHandlers((newStack) => {
@@ -108,7 +111,7 @@ function registerWindowHandlers() {
       width: 500,
       height: 400,
       resizable: true,
-      title: '历史记录',
+      title: '历史记录 - KKTap',
       webPreferences: {
         preload: path.join(__dirname, 'preload.js'),
         nodeIntegration: false,
@@ -125,7 +128,7 @@ function registerWindowHandlers() {
       width: 560,
       height: 620,
       resizable: false,
-      title: '设置',
+      title: '设置 - KKTap',
       webPreferences: {
         preload: path.join(__dirname, 'preload.js'),
         nodeIntegration: false,

@@ -1,7 +1,7 @@
 {
-  "name": "kk-stickynotes",
+  "name": "kktap",
   "version": "1.2.0",
-  "description": "KK便利贴 — Windows 桌面便签软件",
+  "description": "KKTap - Windows 桌面便利贴软件",
   "main": "src/main/main.js",
   "scripts": {
     "start": "electron .",

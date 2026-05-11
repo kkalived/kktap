@@ -1,6 +1,6 @@
-# Tapp
+# KKTap
 
-Tapp 是一款基于 Electron 的 Windows 桌面便利贴软件，强调轻量、常驻、本地优先和低打扰。它保留了真实便利贴的使用直觉，同时加入了截图、图片展示、待办清单、堆叠翻页和 AI 日报等适合现代桌面工作流的能力。
+KKTap 是一款基于 Electron 的 Windows 桌面便利贴软件，强调轻量、常驻、本地优先和低打扰。它保留了真实便利贴的使用直觉，同时加入了截图、图片展示、待办清单、堆叠翻页和 AI 日报等适合现代桌面工作流的能力。
 
 ## 功能特性
 
@@ -47,7 +47,7 @@ Tapp 是一款基于 Electron 的 Windows 桌面便利贴软件，强调轻量�
 ## 项目结构
 
 ```text
-tapp/
+KKTap/
 ├─ assets/                  # 图标和静态资源
 ├─ dev-logs/                # 开发日志
 ├─ docs/                    # 需求、技术规格、数据模型等文档
@@ -94,7 +94,7 @@ npm run build
 在 Windows 上，默认路径通常为：
 
 ```text
-%APPDATA%/tapp/
+%APPDATA%/KKTap/
 ```
 
 ## AI 日报

@@ -1,4 +1,4 @@
-# Tapp — 电子便利贴
+# KKTap — 电子便利贴
 
 基于 Electron 的 Windows 桌面便利贴软件。淡黄色仿真实便利贴外观，支持文字编辑、图片展示、全局截图、多张便利贴堆叠翻页。
 
@@ -45,4 +45,4 @@
 ### 开发环境
 - 运行开发模式：`npm start`
 - 构建安装包：`npm run build`
-- 数据存储目录：`%APPDATA%/tapp/`
+- 数据存储目录：`%APPDATA%/KKTap/`

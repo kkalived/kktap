@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KK便利贴 - 原型图</title>
+    <title>KK渚垮埄璐?- 鍘熷瀷鍥?/title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            font-family: "Microsoft YaHei", "寰蒋闆呴粦", sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 40px;
@@ -80,7 +80,7 @@
             height: 400px;
         }
 
-        /* 便利贴样式 */
+        /* 渚垮埄璐存牱寮?*/
         .sticky-note {
             position: absolute;
             width: 280px;
@@ -217,7 +217,7 @@
             color: #999;
         }
 
-        /* 堆叠效果 */
+        /* 鍫嗗彔鏁堟灉 */
         .note-stack {
             position: absolute;
         }
@@ -241,7 +241,7 @@
             transform: rotate(-0.5deg);
         }
 
-        /* 露出边缘 */
+        /* 闇插嚭杈圭紭 */
         .peek-indicator {
             position: absolute;
             top: 50%;
@@ -260,7 +260,7 @@
             cursor: pointer;
         }
 
-        /* 截图选区 */
+        /* 鎴浘閫夊尯 */
         .screenshot-overlay {
             position: absolute;
             top: 0;
@@ -290,7 +290,7 @@
             white-space: nowrap;
         }
 
-        /* 右键菜单 */
+        /* 鍙抽敭鑿滃崟 */
         .context-menu {
             position: absolute;
             background: white;
@@ -328,7 +328,7 @@
             margin: 6px 0;
         }
 
-        /* 历史记录窗口 */
+        /* 鍘嗗彶璁板綍绐楀彛 */
         .history-window {
             position: absolute;
             width: 500px;
@@ -409,7 +409,7 @@
             cursor: pointer;
         }
 
-        /* 设置窗口 */
+        /* 璁剧疆绐楀彛 */
         .settings-window {
             position: absolute;
             width: 450px;
@@ -491,7 +491,7 @@
             transform: translateX(22px);
         }
 
-        /* 系统托盘 */
+        /* 绯荤粺鎵樼洏 */
         .tray-menu {
             position: absolute;
             background: white;
@@ -527,7 +527,7 @@
             font-size: 12px;
         }
 
-        /* 待办事项 */
+        /* 寰呭姙浜嬮」 */
         .todo-line {
             display: flex;
             align-items: center;
@@ -564,7 +564,7 @@
             flex: 1;
         }
 
-        /* 截图预览 */
+        /* 鎴浘棰勮 */
         .screenshot-preview {
             position: absolute;
             bottom: 20px;
@@ -581,7 +581,7 @@
             border-radius: 4px;
         }
 
-        /* 动画效果说明 */
+        /* 鍔ㄧ敾鏁堟灉璇存槑 */
         .animation-demo {
             background: rgba(255,255,255,0.1);
             border-radius: 12px;
@@ -624,7 +624,7 @@
             color: rgba(255,255,255,0.5);
         }
 
-        /* 响应式 */
+        /* 鍝嶅簲寮?*/
         @media (max-width: 768px) {
             body {
                 padding: 20px;
@@ -646,65 +646,60 @@
 </head>
 <body>
     <div class="prototype-container">
-        <h1>KK便利贴 - UI 原型图</h1>
-        <p class="subtitle">基于 Electron 的 Windows 桌面便利贴应用</p>
+        <h1>KK渚垮埄璐?- UI 鍘熷瀷鍥?/h1>
+        <p class="subtitle">鍩轰簬 Electron 鐨?Windows 妗岄潰渚垮埄璐村簲鐢?/p>
 
-        <!-- 便利贴基础界面 -->
+        <!-- 渚垮埄璐村熀纭€鐣岄潰 -->
         <div class="section">
-            <h2 class="section-title">1. 便利贴主界面</h2>
+            <h2 class="section-title">1. 渚垮埄璐翠富鐣岄潰</h2>
             <div class="prototype-grid">
                 <div class="desktop-mockup">
-                    <div class="mockup-label">单张便利贴</div>
+                    <div class="mockup-label">鍗曞紶渚垮埄璐?/div>
                     <div class="windows-desktop">
                         <div class="sticky-note" style="top: 60px; left: 80px; transform: rotate(-0.5deg);">
                             <div class="note-header">
-                                <span class="note-title">KK便利贴</span>
+                                <span class="note-title">KK渚垮埄璐?/span>
                                 <div class="note-header-actions">
                                     <span class="note-count">1/1</span>
-                                    <button class="btn-close">×</button>
+                                    <button class="btn-close">脳</button>
                                 </div>
                             </div>
                             <div class="note-body">
-                                <div class="note-content" placeholder="在这里输入内容...">会议记录：
-1. 项目进度汇报
-2. 下周任务分配
-3. 技术方案讨论
-
-待办事项：
-- 完成设计稿
-- 代码评审
-- 测试用例编写</div>
+                                <div class="note-content" placeholder="鍦ㄨ繖閲岃緭鍏ュ唴瀹?..">浼氳璁板綍锛?1. 椤圭洰杩涘害姹囨姤
+2. 涓嬪懆浠诲姟鍒嗛厤
+3. 鎶€鏈柟妗堣璁?
+寰呭姙浜嬮」锛?- 瀹屾垚璁捐绋?- 浠ｇ爜璇勫
+- 娴嬭瘯鐢ㄤ緥缂栧啓</div>
                             </div>
                             <div class="note-toolbar">
                                 <button class="toolbar-btn">A+</button>
                                 <button class="toolbar-btn">A-</button>
                                 <button class="toolbar-btn toolbar-btn-bold">B</button>
                                 <button class="toolbar-btn toolbar-btn-italic">I</button>
-                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                                <button class="toolbar-btn toolbar-btn-todo">鈿?/button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">带图片的便利贴</div>
+                    <div class="mockup-label">甯﹀浘鐗囩殑渚垮埄璐?/div>
                     <div class="windows-desktop">
                         <div class="sticky-note" style="top: 60px; left: 80px; transform: rotate(1deg);">
                             <div class="note-header">
-                                <span class="note-title">KK便利贴</span>
+                                <span class="note-title">KK渚垮埄璐?/span>
                                 <div class="note-header-actions">
                                     <span class="note-count">1/1</span>
-                                    <button class="btn-close">×</button>
+                                    <button class="btn-close">脳</button>
                                 </div>
                             </div>
                             <div class="note-body" style="display: flex; gap: 12px;">
                                 <div style="flex: 1;">
                                     <div style="background: #f5f5f5; border-radius: 8px; padding: 8px; font-size: 13px; color: #666;">
-                                        参考资料截图
-                                    </div>
+                                        鍙傝€冭祫鏂欐埅鍥?                                    </div>
                                 </div>
                                 <div style="width: 120px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">
-                                    图片预览
+                                    鍥剧墖棰勮
                                 </div>
                             </div>
                             <div class="note-toolbar">
@@ -712,7 +707,7 @@
                                 <button class="toolbar-btn">A-</button>
                                 <button class="toolbar-btn toolbar-btn-bold">B</button>
                                 <button class="toolbar-btn toolbar-btn-italic">I</button>
-                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                                <button class="toolbar-btn toolbar-btn-todo">鈿?/button>
                             </div>
                         </div>
                     </div>
@@ -720,37 +715,37 @@
             </div>
         </div>
 
-        <!-- 堆叠效果 -->
+        <!-- 鍫嗗彔鏁堟灉 -->
         <div class="section">
-            <h2 class="section-title">2. 便利贴堆叠与翻页</h2>
+            <h2 class="section-title">2. 渚垮埄璐村爢鍙犱笌缈婚〉</h2>
             <div class="prototype-grid">
                 <div class="desktop-mockup">
-                    <div class="mockup-label">堆叠效果 - 多张便利贴</div>
+                    <div class="mockup-label">鍫嗗彔鏁堟灉 - 澶氬紶渚垮埄璐?/div>
                     <div class="windows-desktop">
                         <div class="note-stack" style="top: 80px; left: 100px;">
                             <div class="note-underlay"></div>
                             <div class="note-underlay note-underlay-2"></div>
                             <div class="sticky-note" style="transform: rotate(0.5deg);">
                                 <div class="note-header">
-                                    <span class="note-title">KK便利贴 2/3</span>
+                                    <span class="note-title">KK渚垮埄璐?2/3</span>
                                     <div class="note-header-actions">
                                         <span class="note-count">2/3</span>
-                                        <button class="btn-close">×</button>
+                                        <button class="btn-close">脳</button>
                                     </div>
                                 </div>
                                 <div class="note-body">
-                                    <div class="note-content">第二张便利贴内容...</div>
+                                    <div class="note-content">绗簩寮犱究鍒╄创鍐呭...</div>
                                 </div>
                                 <div class="note-toolbar">
                                     <button class="toolbar-btn">A+</button>
                                     <button class="toolbar-btn">A-</button>
                                     <button class="toolbar-btn toolbar-btn-bold">B</button>
                                     <button class="toolbar-btn toolbar-btn-italic">I</button>
-                                    <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                                    <button class="toolbar-btn toolbar-btn-todo">鈿?/button>
                                 </div>
                                 <div class="peek-indicator">5/9</div>
                                 <button class="page-curl">
-                                    <span class="curl-arrow">◥</span>
+                                    <span class="curl-arrow">鈼?/span>
                                 </button>
                             </div>
                         </div>
@@ -758,27 +753,27 @@
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">3D 翻页动画效果</div>
+                    <div class="mockup-label">3D 缈婚〉鍔ㄧ敾鏁堟灉</div>
                     <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
                         <div class="animation-demo" style="background: transparent; padding: 0; margin: 0;">
                             <div class="animation-steps" style="color: #333;">
                                 <div class="animation-step">
                                     <div class="step-circle" style="background: #FFF9C4;">1</div>
-                                    <div class="step-label">点击翻页按钮</div>
+                                    <div class="step-label">鐐瑰嚮缈婚〉鎸夐挳</div>
                                 </div>
-                                <div class="arrow" style="color: #666;">→</div>
+                                <div class="arrow" style="color: #666;">鈫?/div>
                                 <div class="animation-step">
                                     <div class="step-circle" style="background: #FFF9C4; transform: perspective(200px) rotateY(-45deg);">2</div>
-                                    <div class="step-label">rotateY(-110°)</div>
+                                    <div class="step-label">rotateY(-110掳)</div>
                                 </div>
-                                <div class="arrow" style="color: #666;">→</div>
+                                <div class="arrow" style="color: #666;">鈫?/div>
                                 <div class="animation-step">
                                     <div class="step-circle" style="background: #FFF9C4;">3</div>
-                                    <div class="step-label">翻到下一页</div>
+                                    <div class="step-label">缈诲埌涓嬩竴椤?/div>
                                 </div>
                             </div>
                             <p style="text-align: center; color: #666; font-size: 12px; margin-top: 20px;">
-                                动画时长: 500ms | 缓动: ease-in-out | 视角: 1200px
+                                鍔ㄧ敾鏃堕暱: 500ms | 缂撳姩: ease-in-out | 瑙嗚: 1200px
                             </p>
                         </div>
                     </div>
@@ -786,16 +781,16 @@
             </div>
         </div>
 
-        <!-- 截图功能 -->
+        <!-- 鎴浘鍔熻兘 -->
         <div class="section">
-            <h2 class="section-title">3. 全局截图功能</h2>
+            <h2 class="section-title">3. 鍏ㄥ眬鎴浘鍔熻兘</h2>
             <div class="prototype-grid">
                 <div class="desktop-mockup">
-                    <div class="mockup-label">截图选区界面</div>
+                    <div class="mockup-label">鎴浘閫夊尯鐣岄潰</div>
                     <div class="windows-desktop">
                         <div class="screenshot-overlay">
                             <div class="selection-box" style="left: 200px; top: 80px; width: 400px; height: 250px;">
-                                <div class="selection-info">400 × 250</div>
+                                <div class="selection-info">400 脳 250</div>
                             </div>
                         </div>
                         <div class="screenshot-preview">
@@ -805,7 +800,7 @@
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">快捷键说明</div>
+                    <div class="mockup-label">蹇嵎閿鏄?/div>
                     <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; color: white;">
                         <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
                             <div style="display: flex; gap: 8px;">
@@ -813,97 +808,97 @@
                                 <span style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: bold;">Alt</span>
                                 <span style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: bold;">Z</span>
                             </div>
-                            <span style="font-size: 14px;">截图快捷键</span>
+                            <span style="font-size: 14px;">鎴浘蹇嵎閿?/span>
                         </div>
                         <div style="font-size: 13px; opacity: 0.8; line-height: 1.8;">
-                            <p>• 按下快捷键进入截图模式</p>
-                            <p>• 鼠标拖拽框选截图区域</p>
-                            <p>• 松开鼠标完成截图</p>
-                            <p>• 按 <strong>Esc</strong> 取消截图</p>
-                            <p>• 截图自动复制到剪贴板</p>
+                            <p>鈥?鎸変笅蹇嵎閿繘鍏ユ埅鍥炬ā寮?/p>
+                            <p>鈥?榧犳爣鎷栨嫿妗嗛€夋埅鍥惧尯鍩?/p>
+                            <p>鈥?鏉惧紑榧犳爣瀹屾垚鎴浘</p>
+                            <p>鈥?鎸?<strong>Esc</strong> 鍙栨秷鎴浘</p>
+                            <p>鈥?鎴浘鑷姩澶嶅埗鍒板壀璐存澘</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 右键菜单 -->
+        <!-- 鍙抽敭鑿滃崟 -->
         <div class="section">
-            <h2 class="section-title">4. 右键菜单</h2>
+            <h2 class="section-title">4. 鍙抽敭鑿滃崟</h2>
             <div class="prototype-grid">
                 <div class="desktop-mockup">
-                    <div class="mockup-label">便利贴右键菜单</div>
+                    <div class="mockup-label">渚垮埄璐村彸閿彍鍗?/div>
                     <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
                         <div class="context-menu" style="position: relative;">
                             <div class="context-item">
-                                <span class="context-item-icon">📝</span>
-                                <span>新建便利贴</span>
+                                <span class="context-item-icon">馃摑</span>
+                                <span>鏂板缓渚垮埄璐?/span>
                             </div>
                             <div class="context-item">
-                                <span class="context-item-icon">🖼️</span>
-                                <span>插入图片</span>
-                            </div>
-                            <div class="context-divider"></div>
-                            <div class="context-item">
-                                <span class="context-item-icon">📚</span>
-                                <span>收起全部</span>
-                            </div>
-                            <div class="context-item">
-                                <span class="context-item-icon">📋</span>
-                                <span>展开便利贴</span>
-                            </div>
-                            <div class="context-item">
-                                <span class="context-item-icon">✂️</span>
-                                <span>拆分堆</span>
+                                <span class="context-item-icon">馃柤锔?/span>
+                                <span>鎻掑叆鍥剧墖</span>
                             </div>
                             <div class="context-divider"></div>
                             <div class="context-item">
-                                <span class="context-item-icon">🗑️</span>
-                                <span>删除当前便利贴</span>
+                                <span class="context-item-icon">馃摎</span>
+                                <span>鏀惰捣鍏ㄩ儴</span>
                             </div>
                             <div class="context-item">
-                                <span class="context-item-icon">📜</span>
-                                <span>历史记录</span>
+                                <span class="context-item-icon">馃搵</span>
+                                <span>灞曞紑渚垮埄璐?/span>
                             </div>
                             <div class="context-item">
-                                <span class="context-item-icon">⚙️</span>
-                                <span>设置</span>
+                                <span class="context-item-icon">鉁傦笍</span>
+                                <span>鎷嗗垎鍫?/span>
+                            </div>
+                            <div class="context-divider"></div>
+                            <div class="context-item">
+                                <span class="context-item-icon">馃棏锔?/span>
+                                <span>鍒犻櫎褰撳墠渚垮埄璐?/span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-item-icon">馃摐</span>
+                                <span>鍘嗗彶璁板綍</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-item-icon">鈿欙笍</span>
+                                <span>璁剧疆</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">系统托盘菜单</div>
+                    <div class="mockup-label">绯荤粺鎵樼洏鑿滃崟</div>
                     <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
                         <div class="tray-menu" style="position: relative;">
                             <div style="padding: 12px 16px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px;">
-                                <div class="tray-icon">📌</div>
+                                <div class="tray-icon">馃搶</div>
                                 <div>
-                                    <div style="font-size: 14px; font-weight: 500;">KK便利贴</div>
+                                    <div style="font-size: 14px; font-weight: 500;">KK渚垮埄璐?/div>
                                     <div style="font-size: 11px; color: #999;">v1.2.0</div>
                                 </div>
                             </div>
                             <div class="tray-item">
-                                <span>👁️</span>
-                                <span>显示便利贴</span>
+                                <span>馃憗锔?/span>
+                                <span>鏄剧ず渚垮埄璐?/span>
                             </div>
                             <div class="tray-item">
-                                <span>📸</span>
-                                <span>截图</span>
+                                <span>馃摳</span>
+                                <span>鎴浘</span>
                             </div>
                             <div class="tray-item">
-                                <span>➕</span>
-                                <span>新建便利贴</span>
+                                <span>鉃?/span>
+                                <span>鏂板缓渚垮埄璐?/span>
                             </div>
                             <div class="tray-divider" style="height: 1px; background: #eee; margin: 6px 0;"></div>
                             <div class="tray-item">
-                                <span>⚙️</span>
-                                <span>设置</span>
+                                <span>鈿欙笍</span>
+                                <span>璁剧疆</span>
                             </div>
                             <div class="tray-item">
-                                <span>❌</span>
-                                <span>退出</span>
+                                <span>鉂?/span>
+                                <span>閫€鍑?/span>
                             </div>
                         </div>
                     </div>
@@ -911,47 +906,47 @@
             </div>
         </div>
 
-        <!-- 历史记录与设置 -->
+        <!-- 鍘嗗彶璁板綍涓庤缃?-->
         <div class="section">
-            <h2 class="section-title">5. 历史记录与设置</h2>
+            <h2 class="section-title">5. 鍘嗗彶璁板綍涓庤缃?/h2>
             <div class="prototype-grid">
                 <div class="desktop-mockup">
-                    <div class="mockup-label">历史记录窗口</div>
+                    <div class="mockup-label">鍘嗗彶璁板綍绐楀彛</div>
                     <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
                         <div class="history-window" style="position: relative;">
                             <div class="window-header">
-                                <span class="window-title">历史记录</span>
-                                <button class="btn-close">×</button>
+                                <span class="window-title">鍘嗗彶璁板綍</span>
+                                <button class="btn-close">脳</button>
                             </div>
                             <div class="window-body">
                                 <div class="history-item">
                                     <div>
-                                        <div class="history-content">会议要点总结...</div>
-                                        <div class="history-meta">删除于 2026-05-10 14:30</div>
+                                        <div class="history-content">浼氳瑕佺偣鎬荤粨...</div>
+                                        <div class="history-meta">鍒犻櫎浜?2026-05-10 14:30</div>
                                     </div>
                                     <div class="history-actions">
-                                        <button class="btn-restore">恢复</button>
-                                        <button class="btn-delete">删除</button>
+                                        <button class="btn-restore">鎭㈠</button>
+                                        <button class="btn-delete">鍒犻櫎</button>
                                     </div>
                                 </div>
                                 <div class="history-item">
                                     <div>
-                                        <div class="history-content">项目需求文档</div>
-                                        <div class="history-meta">删除于 2026-05-09 18:45</div>
+                                        <div class="history-content">椤圭洰闇€姹傛枃妗?/div>
+                                        <div class="history-meta">鍒犻櫎浜?2026-05-09 18:45</div>
                                     </div>
                                     <div class="history-actions">
-                                        <button class="btn-restore">恢复</button>
-                                        <button class="btn-delete">删除</button>
+                                        <button class="btn-restore">鎭㈠</button>
+                                        <button class="btn-delete">鍒犻櫎</button>
                                     </div>
                                 </div>
                                 <div class="history-item">
                                     <div>
-                                        <div class="history-content">待办清单：...</div>
-                                        <div class="history-meta">删除于 2026-05-08 09:20</div>
+                                        <div class="history-content">寰呭姙娓呭崟锛?..</div>
+                                        <div class="history-meta">鍒犻櫎浜?2026-05-08 09:20</div>
                                     </div>
                                     <div class="history-actions">
-                                        <button class="btn-restore">恢复</button>
-                                        <button class="btn-delete">删除</button>
+                                        <button class="btn-restore">鎭㈠</button>
+                                        <button class="btn-delete">鍒犻櫎</button>
                                     </div>
                                 </div>
                             </div>
@@ -960,45 +955,45 @@
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">设置窗口</div>
+                    <div class="mockup-label">璁剧疆绐楀彛</div>
                     <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
                         <div class="settings-window" style="position: relative;">
                             <div class="window-header">
-                                <span class="window-title">设置</span>
-                                <button class="btn-close">×</button>
+                                <span class="window-title">璁剧疆</span>
+                                <button class="btn-close">脳</button>
                             </div>
                             <div class="window-body" style="padding: 0;">
                                 <div class="settings-section">
-                                    <div class="settings-label">快捷键设置</div>
+                                    <div class="settings-label">蹇嵎閿缃?/div>
                                     <div class="settings-row">
                                         <div>
-                                            <div>截图快捷键</div>
-                                            <div class="settings-desc">按下快捷键触发截图</div>
+                                            <div>鎴浘蹇嵎閿?/div>
+                                            <div class="settings-desc">鎸変笅蹇嵎閿Е鍙戞埅鍥?/div>
                                         </div>
                                         <input type="text" class="input-shortcut" value="Ctrl+Alt+Z" readonly>
                                     </div>
                                 </div>
                                 <div class="settings-section">
-                                    <div class="settings-label">启动设置</div>
+                                    <div class="settings-label">鍚姩璁剧疆</div>
                                     <div class="settings-row">
                                         <div>
-                                            <div>开机自启</div>
-                                            <div class="settings-desc">登录 Windows 时自动启动</div>
+                                            <div>寮€鏈鸿嚜鍚?/div>
+                                            <div class="settings-desc">鐧诲綍 Windows 鏃惰嚜鍔ㄥ惎鍔?/div>
                                         </div>
                                         <div class="toggle-switch"></div>
                                     </div>
                                 </div>
                                 <div class="settings-section">
-                                    <div class="settings-label">默认尺寸</div>
+                                    <div class="settings-label">榛樿灏哄</div>
                                     <div class="settings-row">
                                         <div>
-                                            <div>新便利贴宽度</div>
+                                            <div>鏂颁究鍒╄创瀹藉害</div>
                                         </div>
                                         <input type="number" class="input-shortcut" value="280" style="width: 80px;">
                                     </div>
                                     <div class="settings-row">
                                         <div>
-                                            <div>新便利贴高度</div>
+                                            <div>鏂颁究鍒╄创楂樺害</div>
                                         </div>
                                         <input type="number" class="input-shortcut" value="280" style="width: 80px;">
                                     </div>
@@ -1010,41 +1005,41 @@
             </div>
         </div>
 
-        <!-- 待办事项 -->
+        <!-- 寰呭姙浜嬮」 -->
         <div class="section">
-            <h2 class="section-title">6. 待办事项功能</h2>
+            <h2 class="section-title">6. 寰呭姙浜嬮」鍔熻兘</h2>
             <div class="prototype-grid">
                 <div class="desktop-mockup">
-                    <div class="mockup-label">便利贴中的待办事项</div>
+                    <div class="mockup-label">渚垮埄璐翠腑鐨勫緟鍔炰簨椤?/div>
                     <div class="windows-desktop">
                         <div class="sticky-note" style="top: 60px; left: 80px; transform: rotate(-0.5deg);">
                             <div class="note-header">
-                                <span class="note-title">KK便利贴</span>
+                                <span class="note-title">KK渚垮埄璐?/span>
                                 <div class="note-header-actions">
                                     <span class="note-count">1/1</span>
-                                    <button class="btn-close">×</button>
+                                    <button class="btn-close">脳</button>
                                 </div>
                             </div>
                             <div class="note-body">
                                 <div class="todo-line">
-                                    <span class="todo-toggle">✓</span>
-                                    <span class="todo-text" style="text-decoration: line-through; color: #999;">完成项目报告</span>
+                                    <span class="todo-toggle">鉁?/span>
+                                    <span class="todo-text" style="text-decoration: line-through; color: #999;">瀹屾垚椤圭洰鎶ュ憡</span>
                                 </div>
                                 <div class="todo-line is-checked">
-                                    <span class="todo-toggle">✓</span>
-                                    <span class="todo-text">代码评审会议</span>
+                                    <span class="todo-toggle">鉁?/span>
+                                    <span class="todo-text">浠ｇ爜璇勫浼氳</span>
                                 </div>
                                 <div class="todo-line is-checked">
-                                    <span class="todo-toggle">✓</span>
-                                    <span class="todo-text">准备演示文稿</span>
+                                    <span class="todo-toggle">鉁?/span>
+                                    <span class="todo-text">鍑嗗婕旂ず鏂囩</span>
                                 </div>
                                 <div class="todo-line">
                                     <span class="todo-toggle"></span>
-                                    <span class="todo-text">回复客户邮件</span>
+                                    <span class="todo-text">鍥炲瀹㈡埛閭欢</span>
                                 </div>
                                 <div class="todo-line">
                                     <span class="todo-toggle"></span>
-                                    <span class="todo-text">更新文档</span>
+                                    <span class="todo-text">鏇存柊鏂囨。</span>
                                 </div>
                             </div>
                             <div class="note-toolbar">
@@ -1052,98 +1047,96 @@
                                 <button class="toolbar-btn">A-</button>
                                 <button class="toolbar-btn toolbar-btn-bold">B</button>
                                 <button class="toolbar-btn toolbar-btn-italic">I</button>
-                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                                <button class="toolbar-btn toolbar-btn-todo">鈿?/button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">交互说明</div>
+                    <div class="mockup-label">浜や簰璇存槑</div>
                     <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; color: white;">
                         <div style="font-size: 14px; line-height: 2;">
-                            <p><strong>创建待办：</strong>点击工具栏 ⚪ 按钮插入</p>
-                            <p><strong>标记完成：</strong>点击圆圈复选框</p>
-                            <p><strong>添加新项目：</strong>在待办项后按 Enter</p>
-                            <p><strong>删除空待办：</strong>按 Backspace 删除</p>
-                            <p><strong>编辑内容：</strong>直接点击文字输入</p>
+                            <p><strong>鍒涘缓寰呭姙锛?/strong>鐐瑰嚮宸ュ叿鏍?鈿?鎸夐挳鎻掑叆</p>
+                            <p><strong>鏍囪瀹屾垚锛?/strong>鐐瑰嚮鍦嗗湀澶嶉€夋</p>
+                            <p><strong>娣诲姞鏂伴」鐩細</strong>鍦ㄥ緟鍔為」鍚庢寜 Enter</p>
+                            <p><strong>鍒犻櫎绌哄緟鍔烇細</strong>鎸?Backspace 鍒犻櫎</p>
+                            <p><strong>缂栬緫鍐呭锛?/strong>鐩存帴鐐瑰嚮鏂囧瓧杈撳叆</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 日报功能 -->
+        <!-- 鏃ユ姤鍔熻兘 -->
         <div class="section">
-            <h2 class="section-title">8. 日报生成功能</h2>
+            <h2 class="section-title">8. 鏃ユ姤鐢熸垚鍔熻兘</h2>
             <div class="prototype-grid">
                 <div class="desktop-mockup">
-                    <div class="mockup-label">工具栏日报按钮</div>
+                    <div class="mockup-label">宸ュ叿鏍忔棩鎶ユ寜閽?/div>
                     <div class="windows-desktop">
                         <div class="sticky-note" style="top: 60px; left: 80px; transform: rotate(-0.5deg);">
                             <div class="note-header">
-                                <span class="note-title">KK便利贴</span>
+                                <span class="note-title">KK渚垮埄璐?/span>
                                 <div class="note-header-actions">
                                     <span class="note-count">1/1</span>
-                                    <button class="btn-close">×</button>
+                                    <button class="btn-close">脳</button>
                                 </div>
                             </div>
                             <div class="note-body">
-                                <div class="note-content" placeholder="在这里输入内容...">今天的工作记录...
-- 完成项目评审
-- 修复 bug #123
-- 参加团队会议</div>
+                                <div class="note-content" placeholder="鍦ㄨ繖閲岃緭鍏ュ唴瀹?..">浠婂ぉ鐨勫伐浣滆褰?..
+- 瀹屾垚椤圭洰璇勫
+- 淇 bug #123
+- 鍙傚姞鍥㈤槦浼氳</div>
                             </div>
                             <div class="note-toolbar">
                                 <button class="toolbar-btn">A+</button>
                                 <button class="toolbar-btn">A-</button>
                                 <button class="toolbar-btn toolbar-btn-bold">B</button>
                                 <button class="toolbar-btn toolbar-btn-italic">I</button>
-                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
-                                <button class="toolbar-btn toolbar-btn-report" style="background: #E3F2FD; color: #1976D2;">日报</button>
+                                <button class="toolbar-btn toolbar-btn-todo">鈿?/button>
+                                <button class="toolbar-btn toolbar-btn-report" style="background: #E3F2FD; color: #1976D2;">鏃ユ姤</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">生成的日报效果</div>
+                    <div class="mockup-label">鐢熸垚鐨勬棩鎶ユ晥鏋?/div>
                     <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
                         <div class="sticky-note" style="width: 320px; height: 380px; position: relative; transform: rotate(-0.5deg);">
                             <div class="note-header">
-                                <span class="note-title">日报</span>
+                                <span class="note-title">鏃ユ姤</span>
                                 <div class="note-header-actions">
                                     <span class="note-count">1/1</span>
-                                    <button class="btn-close">×</button>
+                                    <button class="btn-close">脳</button>
                                 </div>
                             </div>
                             <div class="note-body" style="padding: 16px; font-size: 13px; line-height: 1.8;">
-                                <div style="font-weight: bold; font-size: 15px; margin-bottom: 12px; color: #1976D2;">5月10日日报</div>
+                                <div style="font-weight: bold; font-size: 15px; margin-bottom: 12px; color: #1976D2;">5鏈?0鏃ユ棩鎶?/div>
                                 <div style="margin-bottom: 8px;">
-                                    <strong>今日完成</strong>
+                                    <strong>浠婃棩瀹屾垚</strong>
                                     <div style="padding-left: 12px; color: #555;">
-                                        - 完成项目评审会议<br>
-                                        - 修复 bug #123<br>
-                                        - 代码评审通过
+                                        - 瀹屾垚椤圭洰璇勫浼氳<br>
+                                        - 淇 bug #123<br>
+                                        - 浠ｇ爜璇勫閫氳繃
                                     </div>
                                 </div>
                                 <div style="margin-bottom: 8px;">
-                                    <strong>进行中</strong>
+                                    <strong>杩涜涓?/strong>
                                     <div style="padding-left: 12px; color: #555;">
-                                        - 新功能开发
-                                    </div>
+                                        - 鏂板姛鑳藉紑鍙?                                    </div>
                                 </div>
                                 <div style="margin-bottom: 8px;">
-                                    <strong>问题风险</strong>
+                                    <strong>闂椋庨櫓</strong>
                                     <div style="padding-left: 12px; color: #555;">
-                                        - 测试环境部署中
-                                    </div>
+                                        - 娴嬭瘯鐜閮ㄧ讲涓?                                    </div>
                                 </div>
                                 <div>
-                                    <strong>明日计划</strong>
+                                    <strong>鏄庢棩璁″垝</strong>
                                     <div style="padding-left: 12px; color: #555;">
-                                        - 继续功能开发<br>
-                                        - 准备下周演示
+                                        - 缁х画鍔熻兘寮€鍙?br>
+                                        - 鍑嗗涓嬪懆婕旂ず
                                     </div>
                                 </div>
                             </div>
@@ -1152,43 +1145,43 @@
                                 <button class="toolbar-btn">A-</button>
                                 <button class="toolbar-btn toolbar-btn-bold">B</button>
                                 <button class="toolbar-btn toolbar-btn-italic">I</button>
-                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
-                                <button class="toolbar-btn toolbar-btn-report" style="background: #E3F2FD; color: #1976D2;">日报</button>
+                                <button class="toolbar-btn toolbar-btn-todo">鈿?/button>
+                                <button class="toolbar-btn toolbar-btn-report" style="background: #E3F2FD; color: #1976D2;">鏃ユ姤</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">设置中的 API 配置</div>
+                    <div class="mockup-label">璁剧疆涓殑 API 閰嶇疆</div>
                     <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
                         <div class="settings-window" style="position: relative; width: 400px;">
                             <div class="window-header">
-                                <span class="window-title">设置</span>
-                                <button class="btn-close">×</button>
+                                <span class="window-title">璁剧疆</span>
+                                <button class="btn-close">脳</button>
                             </div>
                             <div class="window-body" style="padding: 0;">
                                 <div class="settings-section">
-                                    <div class="settings-label">AI 日报设置</div>
+                                    <div class="settings-label">AI 鏃ユ姤璁剧疆</div>
                                     <div class="settings-row">
                                         <div>
                                             <div>DeepSeek API Key</div>
-                                            <div class="settings-desc">用于 AI 辅助日报生成</div>
+                                            <div class="settings-desc">鐢ㄤ簬 AI 杈呭姪鏃ユ姤鐢熸垚</div>
                                         </div>
                                         <input type="password" class="input-shortcut" value="sk-xxxx..." style="width: 160px;">
                                     </div>
                                     <div class="settings-row">
                                         <div>
-                                            <div>工作内容描述</div>
-                                            <div class="settings-desc">帮助 AI 筛选相关便利贴</div>
+                                            <div>宸ヤ綔鍐呭鎻忚堪</div>
+                                            <div class="settings-desc">甯姪 AI 绛涢€夌浉鍏充究鍒╄创</div>
                                         </div>
                                     </div>
-                                    <textarea style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; resize: none;" placeholder="例如：软件开发、项目管理...">软件开发工程师，主要负责...</textarea>
+                                    <textarea style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; resize: none;" placeholder="渚嬪锛氳蒋浠跺紑鍙戙€侀」鐩鐞?..">杞欢寮€鍙戝伐绋嬪笀锛屼富瑕佽礋璐?..</textarea>
                                 </div>
                                 <div class="settings-section">
                                     <div class="settings-row">
                                         <div>
-                                            <div>日报模型</div>
+                                            <div>鏃ユ姤妯″瀷</div>
                                         </div>
                                         <input type="text" class="input-shortcut" value="deepseek-v4-flash" style="width: 160px;">
                                     </div>
@@ -1199,73 +1192,72 @@
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">日报生成流程</div>
+                    <div class="mockup-label">鏃ユ姤鐢熸垚娴佺▼</div>
                     <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px;">
                         <div class="animation-steps" style="color: #333;">
                             <div class="animation-step">
-                                <div class="step-circle" style="background: #FFF9C4;">📝</div>
-                                <div class="step-label">记录工作</div>
+                                <div class="step-circle" style="background: #FFF9C4;">馃摑</div>
+                                <div class="step-label">璁板綍宸ヤ綔</div>
                             </div>
-                            <div class="arrow" style="color: #666;">→</div>
+                            <div class="arrow" style="color: #666;">鈫?/div>
                             <div class="animation-step">
-                                <div class="step-circle" style="background: #FFF9C4;">📄</div>
-                                <div class="step-label">点击日报</div>
+                                <div class="step-circle" style="background: #FFF9C4;">馃搫</div>
+                                <div class="step-label">鐐瑰嚮鏃ユ姤</div>
                             </div>
-                            <div class="arrow" style="color: #666;">→</div>
+                            <div class="arrow" style="color: #666;">鈫?/div>
                             <div class="animation-step">
-                                <div class="step-circle" style="background: #FFF9C4;">🤖</div>
-                                <div class="step-label">AI 整理</div>
+                                <div class="step-circle" style="background: #FFF9C4;">馃</div>
+                                <div class="step-label">AI 鏁寸悊</div>
                             </div>
-                            <div class="arrow" style="color: #666;">→</div>
+                            <div class="arrow" style="color: #666;">鈫?/div>
                             <div class="animation-step">
-                                <div class="step-circle" style="background: #FFF9C4;">✅</div>
-                                <div class="step-label">生成日报</div>
+                                <div class="step-circle" style="background: #FFF9C4;">鉁?/div>
+                                <div class="step-label">鐢熸垚鏃ユ姤</div>
                             </div>
                         </div>
                         <p style="text-align: center; color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 20px;">
-                            自动收集今日便利贴 → AI 筛选工作内容 → 结构化输出
-                        </p>
+                            鑷姩鏀堕泦浠婃棩渚垮埄璐?鈫?AI 绛涢€夊伐浣滃唴瀹?鈫?缁撴瀯鍖栬緭鍑?                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 设计规范 -->
+        <!-- 璁捐瑙勮寖 -->
         <div class="section">
-            <h2 class="section-title">9. 设计规范</h2>
+            <h2 class="section-title">9. 璁捐瑙勮寖</h2>
             <div class="prototype-grid">
                 <div class="desktop-mockup">
-                    <div class="mockup-label">颜色规范</div>
+                    <div class="mockup-label">棰滆壊瑙勮寖</div>
                     <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px;">
                         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
                             <div style="text-align: center;">
                                 <div style="width: 60px; height: 60px; background: #FFF9C4; border-radius: 8px; margin: 0 auto 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                                <div style="font-size: 12px; color: white;">便利贴底色</div>
+                                <div style="font-size: 12px; color: white;">渚垮埄璐村簳鑹?/div>
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#FFF9C4</div>
                             </div>
                             <div style="text-align: center;">
                                 <div style="width: 60px; height: 60px; background: #E0D6A0; border-radius: 8px; margin: 0 auto 10px;"></div>
-                                <div style="font-size: 12px; color: white;">边缘颜色</div>
+                                <div style="font-size: 12px; color: white;">杈圭紭棰滆壊</div>
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#E0D6A0</div>
                             </div>
                             <div style="text-align: center;">
                                 <div style="width: 60px; height: 60px; background: #333333; border-radius: 8px; margin: 0 auto 10px;"></div>
-                                <div style="font-size: 12px; color: white;">文字颜色</div>
+                                <div style="font-size: 12px; color: white;">鏂囧瓧棰滆壊</div>
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#333333</div>
                             </div>
                             <div style="text-align: center;">
                                 <div style="width: 60px; height: 60px; background: #E53935; border-radius: 8px; margin: 0 auto 10px;"></div>
-                                <div style="font-size: 12px; color: white;">删除悬停</div>
+                                <div style="font-size: 12px; color: white;">鍒犻櫎鎮仠</div>
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#E53935</div>
                             </div>
                             <div style="text-align: center;">
                                 <div style="width: 60px; height: 60px; background: #2196F3; border-radius: 8px; margin: 0 auto 10px;"></div>
-                                <div style="font-size: 12px; color: white;">截图选区</div>
+                                <div style="font-size: 12px; color: white;">鎴浘閫夊尯</div>
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#2196F3</div>
                             </div>
                             <div style="text-align: center;">
                                 <div style="width: 60px; height: 60px; background: #FFFFFF; border-radius: 8px; margin: 0 auto 10px; border: 1px solid #ddd;"></div>
-                                <div style="font-size: 12px; color: white;">菜单背景</div>
+                                <div style="font-size: 12px; color: white;">鑿滃崟鑳屾櫙</div>
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#FFFFFF</div>
                             </div>
                         </div>
@@ -1273,36 +1265,36 @@
                 </div>
 
                 <div class="desktop-mockup">
-                    <div class="mockup-label">尺寸规范</div>
+                    <div class="mockup-label">灏哄瑙勮寖</div>
                     <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; color: white;">
                         <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
                             <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 10px 0;">默认尺寸</td>
-                                <td style="text-align: right; color: rgba(255,255,255,0.7);">280 × 280 px</td>
+                                <td style="padding: 10px 0;">榛樿灏哄</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">280 脳 280 px</td>
                             </tr>
                             <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 10px 0;">最大尺寸</td>
-                                <td style="text-align: right; color: rgba(255,255,255,0.7);">600 × 600 px</td>
+                                <td style="padding: 10px 0;">鏈€澶у昂瀵?/td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">600 脳 600 px</td>
                             </tr>
                             <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 10px 0;">最小尺寸</td>
-                                <td style="text-align: right; color: rgba(255,255,255,0.7);">180 × 180 px</td>
+                                <td style="padding: 10px 0;">鏈€灏忓昂瀵?/td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">180 脳 180 px</td>
                             </tr>
                             <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 10px 0;">露出边缘</td>
+                                <td style="padding: 10px 0;">闇插嚭杈圭紭</td>
                                 <td style="text-align: right; color: rgba(255,255,255,0.7);">30 px</td>
                             </tr>
                             <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 10px 0;">标题栏高度</td>
+                                <td style="padding: 10px 0;">鏍囬鏍忛珮搴?/td>
                                 <td style="text-align: right; color: rgba(255,255,255,0.7);">32 px</td>
                             </tr>
                             <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                <td style="padding: 10px 0;">圆角</td>
+                                <td style="padding: 10px 0;">鍦嗚</td>
                                 <td style="text-align: right; color: rgba(255,255,255,0.7);">3 px</td>
                             </tr>
                             <tr>
-                                <td style="padding: 10px 0;">旋转角度</td>
-                                <td style="text-align: right; color: rgba(255,255,255,0.7);">-1.5° ~ 1.5°</td>
+                                <td style="padding: 10px 0;">鏃嬭浆瑙掑害</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">-1.5掳 ~ 1.5掳</td>
                             </tr>
                         </table>
                     </div>
@@ -1312,3 +1304,4 @@
     </div>
 </body>
 </html>
+

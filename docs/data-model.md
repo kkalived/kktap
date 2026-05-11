@@ -2,8 +2,8 @@
 
 ## 存储位置
 
-- 数据文件：`%APPDATA%/tapp/data.json`
-- 图片文件：`%APPDATA%/tapp/images/`
+- 数据文件：`%APPDATA%/KKTap/data.json`
+- 图片文件：`%APPDATA%/KKTap/images/`
 
 ## 数据结构
 

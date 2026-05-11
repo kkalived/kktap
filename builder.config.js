@@ -1,6 +1,6 @@
 module.exports = {
-  appId: 'com.kk.stickynotes',
-  productName: 'KK便利贴',
+  appId: 'com.kk.kktap',
+  productName: 'KKTap',
   directories: {
     output: 'release'
   },
@@ -10,7 +10,7 @@ module.exports = {
     signAndEditExecutable: false
   },
   portable: {
-    artifactName: 'KK便利贴-${version}.exe'
+    artifactName: 'KKTap-${version}.exe'
   },
   files: [
     'src/**/*',

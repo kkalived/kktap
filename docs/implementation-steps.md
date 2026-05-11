@@ -17,7 +17,7 @@
 ## Step 2: 数据持久化（noteStore.js）
 **涉及文件**：`src/main/noteStore.js`, `src/main/main.js`
 
-- JSON 文件读写（`%APPDATA%/tapp/data.json`）
+- JSON 文件读写（`%APPDATA%/KKTap/data.json`）
 - 增删改查方法
 - 所有 IPC handler 注册
 - 损坏文件自动恢复
