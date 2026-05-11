@@ -6,6 +6,7 @@ const windows = new Map();
 const mergeTimers = new Map();
 let lastFocusedStackId = null;
 let noteWindowsHidden = false;
+let noteWindowsClosed = false;
 
 function getWorkArea() {
   const display = screen.getPrimaryDisplay();
@@ -21,6 +22,7 @@ function clampToScreen(x, y, w, h) {
 }
 
 function createStackWindow(stackData) {
+  noteWindowsClosed = false;
   const pos = clampToScreen(
     stackData.position.x, stackData.position.y,
     stackData.size.width, stackData.size.height
@@ -145,6 +147,16 @@ function areWindowsHidden() {
   return noteWindowsHidden;
 }
 
+function areWindowsClosed() {
+  return noteWindowsClosed;
+}
+
+function hasVisibleWindows() {
+  return Array.from(windows.values()).some((win) => {
+    return !win.isDestroyed() && win.isVisible();
+  });
+}
+
 function promoteStackWindow(stackId) {
   const win = windows.get(stackId);
   if (!win || win.isDestroyed()) return false;
@@ -177,6 +189,10 @@ function hideAllWindows() {
 
 function showAllWindows() {
   noteWindowsHidden = false;
+  if (windows.size === 0 && noteWindowsClosed) {
+    restoreAllWindows();
+    return;
+  }
   windows.forEach(win => {
     if (!win.isDestroyed()) win.show();
   });
@@ -186,12 +202,12 @@ function showAllWindows() {
 }
 
 function toggleAllWindowsVisibility() {
-  if (noteWindowsHidden) {
-    showAllWindows();
+  if (noteWindowsClosed || windows.size === 0) {
+    reopenAllWindows();
     return true;
   }
 
-  hideAllWindows();
+  closeAllWindowsForToggle();
   return false;
 }
 
@@ -200,6 +216,12 @@ function closeAllWindows() {
     if (!win.isDestroyed()) win.close();
   });
   windows.clear();
+}
+
+function closeAllWindowsForToggle() {
+  noteWindowsHidden = false;
+  noteWindowsClosed = true;
+  closeAllWindows();
 }
 
 function mergeWindows(stackIdA, stackIdB) {
@@ -241,13 +263,22 @@ function spreadStackWindow(stackId, activeNoteId) {
 }
 
 function restoreAllWindows() {
+  noteWindowsClosed = false;
   noteStore.getAllStacks().forEach(stack => createStackWindow(stack));
+}
+
+function reopenAllWindows() {
+  if (windows.size > 0) {
+    showAllWindows();
+    return;
+  }
+  restoreAllWindows();
 }
 
 module.exports = {
   createStackWindow, closeStackWindow, getWindow, getAllWindows,
   hideAllWindows, showAllWindows, closeAllWindows, restoreAllWindows,
-  mergeWindows, splitWindow, getLastFocusedStackId, areWindowsHidden, refreshWindow,
+  mergeWindows, splitWindow, getLastFocusedStackId, areWindowsHidden, areWindowsClosed, refreshWindow,
   promoteStackWindow, collapseAllWindows, spreadStackWindow,
   toggleAllWindowsVisibility
 };

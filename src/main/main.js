@@ -8,7 +8,7 @@ const hotkeyManager = require('./hotkeyManager');
 const screenshotService = require('./screenshotService');
 const reportService = require('./reportService');
 
-const TOGGLE_NOTES_HOTKEY = 'Ctrl+Alt+H';
+const DEFAULT_TOGGLE_NOTES_HOTKEY = 'Ctrl+Alt+H';
 
 app.setName('KKTap');
 app.setPath('userData', path.join(app.getPath('appData'), 'KKTap'));
@@ -205,6 +205,7 @@ function registerScreenshotHandlers() {
 function registerGlobalHotkeys() {
   const settings = noteStore.getSettings();
   const screenshotHotkey = (settings.screenshotHotkey || 'Ctrl+Alt+Z').trim() || 'Ctrl+Alt+Z';
+  const toggleNotesHotkey = (settings.toggleNotesHotkey || DEFAULT_TOGGLE_NOTES_HOTKEY).trim() || DEFAULT_TOGGLE_NOTES_HOTKEY;
 
   hotkeyManager.unregister();
 
@@ -214,7 +215,7 @@ function registerGlobalHotkeys() {
       })
     : false;
 
-  const toggleNotesRegistered = hotkeyManager.registerShortcut('toggle-notes', TOGGLE_NOTES_HOTKEY, () => {
+  const toggleNotesRegistered = hotkeyManager.registerShortcut('toggle-notes', toggleNotesHotkey, () => {
     windowManager.toggleAllWindowsVisibility();
   });
 
@@ -222,6 +223,6 @@ function registerGlobalHotkeys() {
     screenshotRegistered,
     toggleNotesRegistered,
     screenshotHotkey,
-    toggleNotesHotkey: TOGGLE_NOTES_HOTKEY
+    toggleNotesHotkey
   };
 }

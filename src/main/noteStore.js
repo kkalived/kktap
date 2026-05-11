@@ -24,6 +24,7 @@ function defaultData() {
     settings: {
       screenshotHotkey: 'Ctrl+Alt+Z',
       screenshotHotkeyEnabled: true,
+      toggleNotesHotkey: 'Ctrl+Alt+H',
       autoStart: false,
       deepseekApiKey: '',
       dailyReportModel: 'deepseek-v4-flash',
