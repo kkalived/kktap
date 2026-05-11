@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx --version)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node -c \"src/main/main.js\")",
+      "Bash(node -c \"src/main/preload.js\")",
+      "Bash(node -c \"src/renderer/note-stack/app.js\")",
+      "Bash(node -c \"src/main/noteStore.js\")",
+      "Bash(node -c \"src/main/windowManager.js\")",
+      "Bash(npx electron *)",
+      "Bash(tasklist)"
+    ]
+  }
+}

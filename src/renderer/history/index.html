@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>历史记录 - KK便利贴</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="history-container">
+    <h2>历史记录</h2>
+    <p class="desc">这里会保留已删除的便利贴，以及已生成的日报记录。</p>
+
+    <div class="history-tabs">
+      <button class="history-tab active" data-tab="reports">日报</button>
+      <button class="history-tab" data-tab="notes">便利贴</button>
+    </div>
+
+    <div id="toolbar" class="toolbar hidden">
+      <label class="checkbox-label">
+        <input type="checkbox" id="select-all">
+        <span>全选</span>
+      </label>
+      <button id="btn-delete-selected" class="btn-delete-selected">删除所选</button>
+      <span id="selected-count" class="selected-count"></span>
+    </div>
+
+    <div id="history-list"></div>
+    <div id="empty-hint" class="empty-hint">暂无记录</div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KK便利贴 - 原型图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .prototype-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .prototype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .desktop-mockup {
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .mockup-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .windows-desktop {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%230078aa" width="1920" height="1080"/><rect fill="%2300645e" y="950" width="1920" height="130"/></svg>');
+            background-size: cover;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+        }
+
+        /* 便利贴样式 */
+        .sticky-note {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            background: #FFF9C4;
+            border-radius: 3px;
+            box-shadow: 2px 3px 10px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .note-header {
+            height: 32px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.02), transparent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+            cursor: move;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .note-title {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .note-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .note-count {
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .btn-close {
+            width: 20px;
+            height: 20px;
+            border: none;
+            background: transparent;
+            color: #ccc;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .btn-close:hover {
+            background: #E53935;
+            color: white;
+        }
+
+        .note-body {
+            flex: 1;
+            padding: 12px;
+            overflow: hidden;
+        }
+
+        .note-content {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            color: #333;
+            resize: none;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .note-content::placeholder {
+            color: #bbb;
+        }
+
+        .note-toolbar {
+            height: 36px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            gap: 4px;
+        }
+
+        .toolbar-btn {
+            padding: 4px 8px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 12px;
+            color: #666;
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+
+        .toolbar-btn:hover {
+            background: rgba(0,0,0,0.08);
+        }
+
+        .toolbar-btn-bold {
+            font-weight: bold;
+        }
+
+        .toolbar-btn-italic {
+            font-style: italic;
+        }
+
+        .toolbar-btn-todo {
+            font-size: 14px;
+        }
+
+        .page-curl {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.1) 50%);
+            cursor: pointer;
+            border: none;
+        }
+
+        .curl-arrow {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 堆叠效果 */
+        .note-stack {
+            position: absolute;
+        }
+
+        .note-stack .note-underlay {
+            position: absolute;
+            top: 4px;
+            right: -4px;
+            width: 100%;
+            height: 100%;
+            background: #FFF59D;
+            border-radius: 3px;
+            z-index: -1;
+            transform: rotate(1deg);
+        }
+
+        .note-stack .note-underlay-2 {
+            top: 8px;
+            right: -8px;
+            background: #FFEE58;
+            transform: rotate(-0.5deg);
+        }
+
+        /* 露出边缘 */
+        .peek-indicator {
+            position: absolute;
+            top: 50%;
+            right: -30px;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 80px;
+            background: linear-gradient(to right, #FFF9C4, #FFEE58);
+            border-radius: 0 5px 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 10px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        /* 截图选区 */
+        .screenshot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .selection-box {
+            position: absolute;
+            border: 2px dashed #2196F3;
+            background: rgba(33,150,243,0.1);
+            cursor: move;
+        }
+
+        .selection-info {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2196F3;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        /* 右键菜单 */
+        .context-menu {
+            position: absolute;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            min-width: 180px;
+            padding: 6px 0;
+            z-index: 1000;
+        }
+
+        .context-item {
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.15s;
+        }
+
+        .context-item:hover {
+            background: #F5F5F5;
+        }
+
+        .context-item-icon {
+            font-size: 14px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .context-divider {
+            height: 1px;
+            background: #eee;
+            margin: 6px 0;
+        }
+
+        /* 历史记录窗口 */
+        .history-window {
+            position: absolute;
+            width: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .window-header {
+            background: linear-gradient(to bottom, #f8f8f8, #f0f0f0);
+            padding: 16px 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .window-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .window-body {
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            background: #FFF9C4;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-content {
+            flex: 1;
+            font-size: 13px;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .history-meta {
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .history-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-restore {
+            padding: 6px 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .btn-delete {
+            padding: 6px 12px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* 设置窗口 */
+        .settings-window {
+            position: absolute;
+            width: 450px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .settings-section {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .settings-section:last-child {
+            border-bottom: none;
+        }
+
+        .settings-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .settings-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .settings-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .settings-desc {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        .input-shortcut {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            width: 150px;
+            text-align: center;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 48px;
+            height: 26px;
+            background: #ccc;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: #4CAF50;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(22px);
+        }
+
+        /* 系统托盘 */
+        .tray-menu {
+            position: absolute;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            min-width: 200px;
+            padding: 6px 0;
+            z-index: 1000;
+        }
+
+        .tray-item {
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tray-item:hover {
+            background: #F5F5F5;
+        }
+
+        .tray-icon {
+            width: 24px;
+            height: 24px;
+            background: #FFF9C4;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        /* 待办事项 */
+        .todo-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+        }
+
+        .todo-toggle {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #999;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: transparent;
+            transition: all 0.2s;
+        }
+
+        .todo-line.is-checked .todo-toggle {
+            background: #4CAF50;
+            border-color: #4CAF50;
+            color: white;
+        }
+
+        .todo-line.is-checked .todo-text {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .todo-text {
+            flex: 1;
+        }
+
+        /* 截图预览 */
+        .screenshot-preview {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .screenshot-preview img {
+            max-width: 150px;
+            max-height: 100px;
+            border-radius: 4px;
+        }
+
+        /* 动画效果说明 */
+        .animation-demo {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .animation-steps {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .animation-step {
+            text-align: center;
+            color: white;
+        }
+
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 10px;
+        }
+
+        .step-label {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .arrow {
+            font-size: 24px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .prototype-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .animation-steps {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="prototype-container">
+        <h1>KK便利贴 - UI 原型图</h1>
+        <p class="subtitle">基于 Electron 的 Windows 桌面便利贴应用</p>
+
+        <!-- 便利贴基础界面 -->
+        <div class="section">
+            <h2 class="section-title">1. 便利贴主界面</h2>
+            <div class="prototype-grid">
+                <div class="desktop-mockup">
+                    <div class="mockup-label">单张便利贴</div>
+                    <div class="windows-desktop">
+                        <div class="sticky-note" style="top: 60px; left: 80px; transform: rotate(-0.5deg);">
+                            <div class="note-header">
+                                <span class="note-title">KK便利贴</span>
+                                <div class="note-header-actions">
+                                    <span class="note-count">1/1</span>
+                                    <button class="btn-close">×</button>
+                                </div>
+                            </div>
+                            <div class="note-body">
+                                <div class="note-content" placeholder="在这里输入内容...">会议记录：
+1. 项目进度汇报
+2. 下周任务分配
+3. 技术方案讨论
+
+待办事项：
+- 完成设计稿
+- 代码评审
+- 测试用例编写</div>
+                            </div>
+                            <div class="note-toolbar">
+                                <button class="toolbar-btn">A+</button>
+                                <button class="toolbar-btn">A-</button>
+                                <button class="toolbar-btn toolbar-btn-bold">B</button>
+                                <button class="toolbar-btn toolbar-btn-italic">I</button>
+                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">带图片的便利贴</div>
+                    <div class="windows-desktop">
+                        <div class="sticky-note" style="top: 60px; left: 80px; transform: rotate(1deg);">
+                            <div class="note-header">
+                                <span class="note-title">KK便利贴</span>
+                                <div class="note-header-actions">
+                                    <span class="note-count">1/1</span>
+                                    <button class="btn-close">×</button>
+                                </div>
+                            </div>
+                            <div class="note-body" style="display: flex; gap: 12px;">
+                                <div style="flex: 1;">
+                                    <div style="background: #f5f5f5; border-radius: 8px; padding: 8px; font-size: 13px; color: #666;">
+                                        参考资料截图
+                                    </div>
+                                </div>
+                                <div style="width: 120px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">
+                                    图片预览
+                                </div>
+                            </div>
+                            <div class="note-toolbar">
+                                <button class="toolbar-btn">A+</button>
+                                <button class="toolbar-btn">A-</button>
+                                <button class="toolbar-btn toolbar-btn-bold">B</button>
+                                <button class="toolbar-btn toolbar-btn-italic">I</button>
+                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 堆叠效果 -->
+        <div class="section">
+            <h2 class="section-title">2. 便利贴堆叠与翻页</h2>
+            <div class="prototype-grid">
+                <div class="desktop-mockup">
+                    <div class="mockup-label">堆叠效果 - 多张便利贴</div>
+                    <div class="windows-desktop">
+                        <div class="note-stack" style="top: 80px; left: 100px;">
+                            <div class="note-underlay"></div>
+                            <div class="note-underlay note-underlay-2"></div>
+                            <div class="sticky-note" style="transform: rotate(0.5deg);">
+                                <div class="note-header">
+                                    <span class="note-title">KK便利贴 2/3</span>
+                                    <div class="note-header-actions">
+                                        <span class="note-count">2/3</span>
+                                        <button class="btn-close">×</button>
+                                    </div>
+                                </div>
+                                <div class="note-body">
+                                    <div class="note-content">第二张便利贴内容...</div>
+                                </div>
+                                <div class="note-toolbar">
+                                    <button class="toolbar-btn">A+</button>
+                                    <button class="toolbar-btn">A-</button>
+                                    <button class="toolbar-btn toolbar-btn-bold">B</button>
+                                    <button class="toolbar-btn toolbar-btn-italic">I</button>
+                                    <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                                </div>
+                                <div class="peek-indicator">5/9</div>
+                                <button class="page-curl">
+                                    <span class="curl-arrow">◥</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">3D 翻页动画效果</div>
+                    <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
+                        <div class="animation-demo" style="background: transparent; padding: 0; margin: 0;">
+                            <div class="animation-steps" style="color: #333;">
+                                <div class="animation-step">
+                                    <div class="step-circle" style="background: #FFF9C4;">1</div>
+                                    <div class="step-label">点击翻页按钮</div>
+                                </div>
+                                <div class="arrow" style="color: #666;">→</div>
+                                <div class="animation-step">
+                                    <div class="step-circle" style="background: #FFF9C4; transform: perspective(200px) rotateY(-45deg);">2</div>
+                                    <div class="step-label">rotateY(-110°)</div>
+                                </div>
+                                <div class="arrow" style="color: #666;">→</div>
+                                <div class="animation-step">
+                                    <div class="step-circle" style="background: #FFF9C4;">3</div>
+                                    <div class="step-label">翻到下一页</div>
+                                </div>
+                            </div>
+                            <p style="text-align: center; color: #666; font-size: 12px; margin-top: 20px;">
+                                动画时长: 500ms | 缓动: ease-in-out | 视角: 1200px
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 截图功能 -->
+        <div class="section">
+            <h2 class="section-title">3. 全局截图功能</h2>
+            <div class="prototype-grid">
+                <div class="desktop-mockup">
+                    <div class="mockup-label">截图选区界面</div>
+                    <div class="windows-desktop">
+                        <div class="screenshot-overlay">
+                            <div class="selection-box" style="left: 200px; top: 80px; width: 400px; height: 250px;">
+                                <div class="selection-info">400 × 250</div>
+                            </div>
+                        </div>
+                        <div class="screenshot-preview">
+                            <div style="width: 150px; height: 100px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">快捷键说明</div>
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; color: white;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                            <div style="display: flex; gap: 8px;">
+                                <span style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: bold;">Ctrl</span>
+                                <span style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: bold;">Alt</span>
+                                <span style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: bold;">Z</span>
+                            </div>
+                            <span style="font-size: 14px;">截图快捷键</span>
+                        </div>
+                        <div style="font-size: 13px; opacity: 0.8; line-height: 1.8;">
+                            <p>• 按下快捷键进入截图模式</p>
+                            <p>• 鼠标拖拽框选截图区域</p>
+                            <p>• 松开鼠标完成截图</p>
+                            <p>• 按 <strong>Esc</strong> 取消截图</p>
+                            <p>• 截图自动复制到剪贴板</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右键菜单 -->
+        <div class="section">
+            <h2 class="section-title">4. 右键菜单</h2>
+            <div class="prototype-grid">
+                <div class="desktop-mockup">
+                    <div class="mockup-label">便利贴右键菜单</div>
+                    <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
+                        <div class="context-menu" style="position: relative;">
+                            <div class="context-item">
+                                <span class="context-item-icon">📝</span>
+                                <span>新建便利贴</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-item-icon">🖼️</span>
+                                <span>插入图片</span>
+                            </div>
+                            <div class="context-divider"></div>
+                            <div class="context-item">
+                                <span class="context-item-icon">📚</span>
+                                <span>收起全部</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-item-icon">📋</span>
+                                <span>展开便利贴</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-item-icon">✂️</span>
+                                <span>拆分堆</span>
+                            </div>
+                            <div class="context-divider"></div>
+                            <div class="context-item">
+                                <span class="context-item-icon">🗑️</span>
+                                <span>删除当前便利贴</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-item-icon">📜</span>
+                                <span>历史记录</span>
+                            </div>
+                            <div class="context-item">
+                                <span class="context-item-icon">⚙️</span>
+                                <span>设置</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">系统托盘菜单</div>
+                    <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
+                        <div class="tray-menu" style="position: relative;">
+                            <div style="padding: 12px 16px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px;">
+                                <div class="tray-icon">📌</div>
+                                <div>
+                                    <div style="font-size: 14px; font-weight: 500;">KK便利贴</div>
+                                    <div style="font-size: 11px; color: #999;">v1.2.0</div>
+                                </div>
+                            </div>
+                            <div class="tray-item">
+                                <span>👁️</span>
+                                <span>显示便利贴</span>
+                            </div>
+                            <div class="tray-item">
+                                <span>📸</span>
+                                <span>截图</span>
+                            </div>
+                            <div class="tray-item">
+                                <span>➕</span>
+                                <span>新建便利贴</span>
+                            </div>
+                            <div class="tray-divider" style="height: 1px; background: #eee; margin: 6px 0;"></div>
+                            <div class="tray-item">
+                                <span>⚙️</span>
+                                <span>设置</span>
+                            </div>
+                            <div class="tray-item">
+                                <span>❌</span>
+                                <span>退出</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史记录与设置 -->
+        <div class="section">
+            <h2 class="section-title">5. 历史记录与设置</h2>
+            <div class="prototype-grid">
+                <div class="desktop-mockup">
+                    <div class="mockup-label">历史记录窗口</div>
+                    <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
+                        <div class="history-window" style="position: relative;">
+                            <div class="window-header">
+                                <span class="window-title">历史记录</span>
+                                <button class="btn-close">×</button>
+                            </div>
+                            <div class="window-body">
+                                <div class="history-item">
+                                    <div>
+                                        <div class="history-content">会议要点总结...</div>
+                                        <div class="history-meta">删除于 2026-05-10 14:30</div>
+                                    </div>
+                                    <div class="history-actions">
+                                        <button class="btn-restore">恢复</button>
+                                        <button class="btn-delete">删除</button>
+                                    </div>
+                                </div>
+                                <div class="history-item">
+                                    <div>
+                                        <div class="history-content">项目需求文档</div>
+                                        <div class="history-meta">删除于 2026-05-09 18:45</div>
+                                    </div>
+                                    <div class="history-actions">
+                                        <button class="btn-restore">恢复</button>
+                                        <button class="btn-delete">删除</button>
+                                    </div>
+                                </div>
+                                <div class="history-item">
+                                    <div>
+                                        <div class="history-content">待办清单：...</div>
+                                        <div class="history-meta">删除于 2026-05-08 09:20</div>
+                                    </div>
+                                    <div class="history-actions">
+                                        <button class="btn-restore">恢复</button>
+                                        <button class="btn-delete">删除</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">设置窗口</div>
+                    <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
+                        <div class="settings-window" style="position: relative;">
+                            <div class="window-header">
+                                <span class="window-title">设置</span>
+                                <button class="btn-close">×</button>
+                            </div>
+                            <div class="window-body" style="padding: 0;">
+                                <div class="settings-section">
+                                    <div class="settings-label">快捷键设置</div>
+                                    <div class="settings-row">
+                                        <div>
+                                            <div>截图快捷键</div>
+                                            <div class="settings-desc">按下快捷键触发截图</div>
+                                        </div>
+                                        <input type="text" class="input-shortcut" value="Ctrl+Alt+Z" readonly>
+                                    </div>
+                                </div>
+                                <div class="settings-section">
+                                    <div class="settings-label">启动设置</div>
+                                    <div class="settings-row">
+                                        <div>
+                                            <div>开机自启</div>
+                                            <div class="settings-desc">登录 Windows 时自动启动</div>
+                                        </div>
+                                        <div class="toggle-switch"></div>
+                                    </div>
+                                </div>
+                                <div class="settings-section">
+                                    <div class="settings-label">默认尺寸</div>
+                                    <div class="settings-row">
+                                        <div>
+                                            <div>新便利贴宽度</div>
+                                        </div>
+                                        <input type="number" class="input-shortcut" value="280" style="width: 80px;">
+                                    </div>
+                                    <div class="settings-row">
+                                        <div>
+                                            <div>新便利贴高度</div>
+                                        </div>
+                                        <input type="number" class="input-shortcut" value="280" style="width: 80px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 待办事项 -->
+        <div class="section">
+            <h2 class="section-title">6. 待办事项功能</h2>
+            <div class="prototype-grid">
+                <div class="desktop-mockup">
+                    <div class="mockup-label">便利贴中的待办事项</div>
+                    <div class="windows-desktop">
+                        <div class="sticky-note" style="top: 60px; left: 80px; transform: rotate(-0.5deg);">
+                            <div class="note-header">
+                                <span class="note-title">KK便利贴</span>
+                                <div class="note-header-actions">
+                                    <span class="note-count">1/1</span>
+                                    <button class="btn-close">×</button>
+                                </div>
+                            </div>
+                            <div class="note-body">
+                                <div class="todo-line">
+                                    <span class="todo-toggle">✓</span>
+                                    <span class="todo-text" style="text-decoration: line-through; color: #999;">完成项目报告</span>
+                                </div>
+                                <div class="todo-line is-checked">
+                                    <span class="todo-toggle">✓</span>
+                                    <span class="todo-text">代码评审会议</span>
+                                </div>
+                                <div class="todo-line is-checked">
+                                    <span class="todo-toggle">✓</span>
+                                    <span class="todo-text">准备演示文稿</span>
+                                </div>
+                                <div class="todo-line">
+                                    <span class="todo-toggle"></span>
+                                    <span class="todo-text">回复客户邮件</span>
+                                </div>
+                                <div class="todo-line">
+                                    <span class="todo-toggle"></span>
+                                    <span class="todo-text">更新文档</span>
+                                </div>
+                            </div>
+                            <div class="note-toolbar">
+                                <button class="toolbar-btn">A+</button>
+                                <button class="toolbar-btn">A-</button>
+                                <button class="toolbar-btn toolbar-btn-bold">B</button>
+                                <button class="toolbar-btn toolbar-btn-italic">I</button>
+                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">交互说明</div>
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; color: white;">
+                        <div style="font-size: 14px; line-height: 2;">
+                            <p><strong>创建待办：</strong>点击工具栏 ⚪ 按钮插入</p>
+                            <p><strong>标记完成：</strong>点击圆圈复选框</p>
+                            <p><strong>添加新项目：</strong>在待办项后按 Enter</p>
+                            <p><strong>删除空待办：</strong>按 Backspace 删除</p>
+                            <p><strong>编辑内容：</strong>直接点击文字输入</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 日报功能 -->
+        <div class="section">
+            <h2 class="section-title">8. 日报生成功能</h2>
+            <div class="prototype-grid">
+                <div class="desktop-mockup">
+                    <div class="mockup-label">工具栏日报按钮</div>
+                    <div class="windows-desktop">
+                        <div class="sticky-note" style="top: 60px; left: 80px; transform: rotate(-0.5deg);">
+                            <div class="note-header">
+                                <span class="note-title">KK便利贴</span>
+                                <div class="note-header-actions">
+                                    <span class="note-count">1/1</span>
+                                    <button class="btn-close">×</button>
+                                </div>
+                            </div>
+                            <div class="note-body">
+                                <div class="note-content" placeholder="在这里输入内容...">今天的工作记录...
+- 完成项目评审
+- 修复 bug #123
+- 参加团队会议</div>
+                            </div>
+                            <div class="note-toolbar">
+                                <button class="toolbar-btn">A+</button>
+                                <button class="toolbar-btn">A-</button>
+                                <button class="toolbar-btn toolbar-btn-bold">B</button>
+                                <button class="toolbar-btn toolbar-btn-italic">I</button>
+                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                                <button class="toolbar-btn toolbar-btn-report" style="background: #E3F2FD; color: #1976D2;">日报</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">生成的日报效果</div>
+                    <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
+                        <div class="sticky-note" style="width: 320px; height: 380px; position: relative; transform: rotate(-0.5deg);">
+                            <div class="note-header">
+                                <span class="note-title">日报</span>
+                                <div class="note-header-actions">
+                                    <span class="note-count">1/1</span>
+                                    <button class="btn-close">×</button>
+                                </div>
+                            </div>
+                            <div class="note-body" style="padding: 16px; font-size: 13px; line-height: 1.8;">
+                                <div style="font-weight: bold; font-size: 15px; margin-bottom: 12px; color: #1976D2;">5月10日日报</div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong>今日完成</strong>
+                                    <div style="padding-left: 12px; color: #555;">
+                                        - 完成项目评审会议<br>
+                                        - 修复 bug #123<br>
+                                        - 代码评审通过
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong>进行中</strong>
+                                    <div style="padding-left: 12px; color: #555;">
+                                        - 新功能开发
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong>问题风险</strong>
+                                    <div style="padding-left: 12px; color: #555;">
+                                        - 测试环境部署中
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong>明日计划</strong>
+                                    <div style="padding-left: 12px; color: #555;">
+                                        - 继续功能开发<br>
+                                        - 准备下周演示
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="note-toolbar">
+                                <button class="toolbar-btn">A+</button>
+                                <button class="toolbar-btn">A-</button>
+                                <button class="toolbar-btn toolbar-btn-bold">B</button>
+                                <button class="toolbar-btn toolbar-btn-italic">I</button>
+                                <button class="toolbar-btn toolbar-btn-todo">⚪</button>
+                                <button class="toolbar-btn toolbar-btn-report" style="background: #E3F2FD; color: #1976D2;">日报</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">设置中的 API 配置</div>
+                    <div class="windows-desktop" style="display: flex; align-items: center; justify-content: center;">
+                        <div class="settings-window" style="position: relative; width: 400px;">
+                            <div class="window-header">
+                                <span class="window-title">设置</span>
+                                <button class="btn-close">×</button>
+                            </div>
+                            <div class="window-body" style="padding: 0;">
+                                <div class="settings-section">
+                                    <div class="settings-label">AI 日报设置</div>
+                                    <div class="settings-row">
+                                        <div>
+                                            <div>DeepSeek API Key</div>
+                                            <div class="settings-desc">用于 AI 辅助日报生成</div>
+                                        </div>
+                                        <input type="password" class="input-shortcut" value="sk-xxxx..." style="width: 160px;">
+                                    </div>
+                                    <div class="settings-row">
+                                        <div>
+                                            <div>工作内容描述</div>
+                                            <div class="settings-desc">帮助 AI 筛选相关便利贴</div>
+                                        </div>
+                                    </div>
+                                    <textarea style="width: 100%; height: 60px; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; resize: none;" placeholder="例如：软件开发、项目管理...">软件开发工程师，主要负责...</textarea>
+                                </div>
+                                <div class="settings-section">
+                                    <div class="settings-row">
+                                        <div>
+                                            <div>日报模型</div>
+                                        </div>
+                                        <input type="text" class="input-shortcut" value="deepseek-v4-flash" style="width: 160px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">日报生成流程</div>
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px;">
+                        <div class="animation-steps" style="color: #333;">
+                            <div class="animation-step">
+                                <div class="step-circle" style="background: #FFF9C4;">📝</div>
+                                <div class="step-label">记录工作</div>
+                            </div>
+                            <div class="arrow" style="color: #666;">→</div>
+                            <div class="animation-step">
+                                <div class="step-circle" style="background: #FFF9C4;">📄</div>
+                                <div class="step-label">点击日报</div>
+                            </div>
+                            <div class="arrow" style="color: #666;">→</div>
+                            <div class="animation-step">
+                                <div class="step-circle" style="background: #FFF9C4;">🤖</div>
+                                <div class="step-label">AI 整理</div>
+                            </div>
+                            <div class="arrow" style="color: #666;">→</div>
+                            <div class="animation-step">
+                                <div class="step-circle" style="background: #FFF9C4;">✅</div>
+                                <div class="step-label">生成日报</div>
+                            </div>
+                        </div>
+                        <p style="text-align: center; color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 20px;">
+                            自动收集今日便利贴 → AI 筛选工作内容 → 结构化输出
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 设计规范 -->
+        <div class="section">
+            <h2 class="section-title">9. 设计规范</h2>
+            <div class="prototype-grid">
+                <div class="desktop-mockup">
+                    <div class="mockup-label">颜色规范</div>
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px;">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: #FFF9C4; border-radius: 8px; margin: 0 auto 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
+                                <div style="font-size: 12px; color: white;">便利贴底色</div>
+                                <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#FFF9C4</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: #E0D6A0; border-radius: 8px; margin: 0 auto 10px;"></div>
+                                <div style="font-size: 12px; color: white;">边缘颜色</div>
+                                <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#E0D6A0</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: #333333; border-radius: 8px; margin: 0 auto 10px;"></div>
+                                <div style="font-size: 12px; color: white;">文字颜色</div>
+                                <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#333333</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: #E53935; border-radius: 8px; margin: 0 auto 10px;"></div>
+                                <div style="font-size: 12px; color: white;">删除悬停</div>
+                                <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#E53935</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: #2196F3; border-radius: 8px; margin: 0 auto 10px;"></div>
+                                <div style="font-size: 12px; color: white;">截图选区</div>
+                                <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#2196F3</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: #FFFFFF; border-radius: 8px; margin: 0 auto 10px; border: 1px solid #ddd;"></div>
+                                <div style="font-size: 12px; color: white;">菜单背景</div>
+                                <div style="font-size: 11px; color: rgba(255,255,255,0.6);">#FFFFFF</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desktop-mockup">
+                    <div class="mockup-label">尺寸规范</div>
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; color: white;">
+                        <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 10px 0;">默认尺寸</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">280 × 280 px</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 10px 0;">最大尺寸</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">600 × 600 px</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 10px 0;">最小尺寸</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">180 × 180 px</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 10px 0;">露出边缘</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">30 px</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 10px 0;">标题栏高度</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">32 px</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 10px 0;">圆角</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">3 px</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px 0;">旋转角度</td>
+                                <td style="text-align: right; color: rgba(255,255,255,0.7);">-1.5° ~ 1.5°</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

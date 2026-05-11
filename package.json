@@ -1,0 +1,16 @@
+{
+  "name": "kk-stickynotes",
+  "version": "1.2.0",
+  "description": "KK便利贴 — Windows 桌面便签软件",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --config builder.config.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^42.0.1",
+    "electron-builder": "^26.8.1"
+  }
+}

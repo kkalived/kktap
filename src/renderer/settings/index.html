@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>设置 - KK便利贴</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="settings-container">
+    <h2>设置</h2>
+
+    <div class="setting-group">
+      <label class="setting-label">截图快捷键</label>
+      <div class="setting-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="hotkey-enabled">
+          <span class="checkbox-text">启用</span>
+        </label>
+        <input type="text" id="hotkey-input" class="hotkey-input" readonly placeholder="点击后按下新的快捷键">
+        <button id="btn-record" class="btn-record">录制快捷键</button>
+      </div>
+      <p class="setting-hint">勾选启用后，按下快捷键即可截图；取消勾选则禁用。</p>
+    </div>
+
+    <div class="setting-group">
+      <label class="setting-label">开机自启</label>
+      <div class="setting-row">
+        <label class="toggle">
+          <input type="checkbox" id="autostart-checkbox">
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label">启动 Windows 时自动运行 KK便利贴</span>
+      </div>
+    </div>
+
+    <div class="setting-group">
+      <label class="setting-label" for="deepseek-api-key">DeepSeek API Key</label>
+      <input type="password" id="deepseek-api-key" class="text-input" placeholder="sk-...">
+      <p class="setting-hint">日报生成会直接调用 DeepSeek 官方接口。</p>
+    </div>
+
+    <div class="setting-group">
+      <label class="setting-label" for="daily-report-model">日报模型</label>
+      <input type="text" id="daily-report-model" class="text-input" placeholder="deepseek-v4-flash">
+      <p class="setting-hint">推荐先使用 `deepseek-v4-flash`。</p>
+    </div>
+
+    <div class="setting-group">
+      <label class="setting-label" for="daily-report-work-content">工作内容</label>
+      <textarea
+        id="daily-report-work-content"
+        class="textarea-input"
+        placeholder="填写你当前负责的项目、目标、职责范围、正在推进的事项。日报生成会把这段内容当作轻量 RAG 上下文，用来过滤非工作信息。"
+      ></textarea>
+      <p class="setting-hint">这里建议写具体一点，例如项目名、客户名、当前阶段、重点任务和关心的问题。</p>
+    </div>
+
+    <div class="setting-footer">
+      <button id="btn-save" class="btn-save">保存设置</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

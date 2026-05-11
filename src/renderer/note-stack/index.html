@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KK便利贴</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stack" class="stack-container">
+    <!-- 由 app.js 动态渲染 -->
+  </div>
+
+  <!-- 四边缩放手柄 -->
+  <div class="resize-edge resize-top"></div>
+  <div class="resize-edge resize-right"></div>
+  <div class="resize-edge resize-bottom"></div>
+  <div class="resize-edge resize-left"></div>
+  <div class="resize-corner resize-corner-tl"></div>
+  <div class="resize-corner resize-corner-tr"></div>
+  <div class="resize-corner resize-corner-bl"></div>
+  <div class="resize-corner resize-corner-br"></div>
+
+  <!-- 右键菜单 -->
+  <div id="context-menu" class="context-menu">
+    <div class="context-item" data-action="new">+ 新建便利贴</div>
+    <div class="context-item" data-action="image">插入图片...</div>
+    <div class="context-separator"></div>
+    <div class="context-item" data-action="collapse" id="menu-collapse">收起全部便利贴</div>
+    <div class="context-item" data-action="spread" id="menu-spread">分散当前堆叠</div>
+    <div class="context-item" data-action="split" id="menu-split">分离当前便利贴</div>
+    <div class="context-item" data-action="history">历史记录</div>
+    <div class="context-separator"></div>
+    <div class="context-item" data-action="settings">设置</div>
+    <div class="context-separator"></div>
+    <div class="context-item danger" data-action="delete">删除</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
